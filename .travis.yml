@@ -18,4 +18,9 @@ deploy:
     - bundle exec rake db:migrate
     - bundle exec rake cleanup
 notifications:
-  slack: yoshiemon:aJDhm1xHKIwOqdgHQ61P4XRt
+  slack:
+    rooms:
+      - secure: "BZFjOAr2vEjzRCeNQCe0WkSVIeH1X0WCI511zkQAFf4+NlHKhwC4s87HDw6nIPIU09gU9vvm/7PCW88Xobsq/2emCyQ2lJl3dnRmzgAM/A1UakdRzG/TLKrvvRsChh0RRAdu4itOpxcznnSPXCfoGENgwL/XjA/pZET7T0XU7/romZ9DvcyOZMJ8CRRpHmiYePlgLI3aB3kx/tccKMLeo1wWcnYudA2NXZtJKaOB54/UWe8MSy6L902MNHri7hzAGbSCqvzNUYrCs2U1qYSlF0gpfbrIPNWDYex90i6qwxjTF/cAzlmfujSPpGYVCaDcJ+P3R/LJWKKDhvEGjA87uBNC+vFdwhl2jwRY5XW+fFcGTQrPDsvVzvu6hC+5lmFkKC0d3uvYchjwvEAZVEORdNnDS+MHiQYxd8hUVTowrwES4zGI4+4viRQyN0+La09jIeZ61tMBPYrSAhz/yNj9JcvSdRHs9a1lZ7fG8somB6ceZadTN6gOjIsQWFsfTfzNFPN+wPZRG90qJMejlZIGywk+Rbkd0KnGUUR0kGdW1jE4LIKqtbcBq29YtOh1iEnSCbwb9d/tH7Ne3QvWmNvd2iZHx/dKX6XS/RDPa6W5cM5VoF+4tLZ5WmXRa/2omK2V+6I3zeW2WK2uscpwOWlN+jEmejd8AtlYCuQLBJf3sks="
+    on_success: always
+    on_failure: always
+    on_pull_requests: true
