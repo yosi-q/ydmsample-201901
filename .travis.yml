@@ -4,8 +4,8 @@ services: postgresql
 bundler_args: "--without production -j4"
 cache: bundler
 before_script:
-- bundle exec rake db:create
-- bundle exec rake db:migrate
+  - bundle exec rake db:create
+  - bundle exec rake db:migrate
 script: bundle exec rake test
 deploy:
   provider: heroku
@@ -15,5 +15,5 @@ deploy:
   on:
     repo: yosi-q/ydmsample-201901
   run:
-- bundle exec rake db:migrate
-- bundle exec rake cleanup
+    - bundle exec rake db:migrate
+    - bundle exec rake cleanup
