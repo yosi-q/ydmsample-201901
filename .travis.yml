@@ -1,0 +1,9 @@
+language: ruby
+rvm: 2.5.1
+services: postgresql
+bundler_args: "--without production -j4"
+cache: bundler
+before_script:
+- bundle exec rake db:create
+- bundle exec rake db:migrate
+script: bundle exec rake test
