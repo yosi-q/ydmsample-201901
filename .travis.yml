@@ -7,3 +7,13 @@ before_script:
 - bundle exec rake db:create
 - bundle exec rake db:migrate
 script: bundle exec rake test
+deploy:
+  provider: heroku
+  api_key:
+    secure: oAqCRwAs2ILK09L1kEzRMv5wWlpThCkkelLVFLwJ6+j5o3yWbDf+5b4lQ2EOWl3Q4u0RMjCxOdBbfYGadHQJ/cXsuPfBV+HBpix88BNG438GMueoN38hcsBQkodMKZwge0i2gChNBJDY2BAeNWL4tqx64+fRXejdRCOBfm4i5Lu6dvncvPCHvx1wTGR/hlyUce/1FwkbWYRcmbZALo3P8yubaSdGLOm0RyDBVPS0vNFNZSiIr51tlhILyGGpdO6v+iMVOoojnCInFFzRQmMimUwfwpuIKgt1exJDhzj3+flNUMVdmKuZU9YbMHnUf/mY6J5MGvNORxLdmC9Y7oPbtgToYeHi9bHgriUxfZOfmuu02S6RH0vd+vSrYbg4QtfH4TBk6JtbKumBuNiZ5Dxnn8HWH4cc5AA48g8EgzKvmJhqtykzdNlPxwBsJcKqs45lQFujOdS4VHQ8ruDPcUeJDKl6f0bvqQ9rS7+tNdqcOAQDzVCJ1wGSrjd6yGe4Q17DR90AQamwxjOIKYadqNJ+XmFHh0KPjsMXX/BDroUZPSIAJGek+vsWkdwve7fOgRIhdHQ3uy2rMDjZnq31oHHIAyUV4zrXwXyOV8/BWlsXCYnDImGvDxHZgd6UP37XFY4hxlXivkQKa2JC+CGVEnZxC0D4jsD/Yd4MYbROg3977oo=
+  app: ydmsample-201901-stage
+  on:
+    repo: yosi-q/ydmsample-201901
+  run:
+- bundle exec rake db:migrate
+- bundle exec rake cleanup
