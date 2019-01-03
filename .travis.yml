@@ -17,3 +17,5 @@ deploy:
   run:
     - bundle exec rake db:migrate
     - bundle exec rake cleanup
+notifications:
+  slack: yoshiemon:aJDhm1xHKIwOqdgHQ61P4XRt
