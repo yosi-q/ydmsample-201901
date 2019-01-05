@@ -14,6 +14,8 @@ before_script:
   - bundle exec rake db:migrate
 script: bundle exec rake test
 after_script:
+  - pwd
+  - find coverage
   - ./cc-test-reporter format-coverage -t simplecov -o coverage/codeclimate.backend.json coverage/backend/.resultset.json
   - ./cc-test-reporter sum-coverage coverage/codeclimate.*.json -p 2
   - if [[ "$TRAVIS_TEST_RESULT" == 0 ]]; then ./cc-test-reporter upload-coverage; fi
