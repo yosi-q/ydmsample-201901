@@ -60,7 +60,6 @@ group :test do
   gem 'chromedriver-helper'
 
   gem 'simplecov'
-  gem 'ruby-test-reporter', '~> 1.0.0'
 end
 
 group :test, :production do
