@@ -59,7 +59,8 @@ group :test do
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
 
-  gem 'codeclimate-test-reporter'
+  gem 'simplecov'
+  gem 'ruby-test-reporter', '~> 1.0.0'
 end
 
 group :test, :production do

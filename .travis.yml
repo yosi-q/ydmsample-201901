@@ -1,12 +1,22 @@
 language: ruby
 rvm: 2.5.1
+env:
+  global:
+    CC_TEST_REPORTER_ID=943d1f35a9019cfc884b0a99a26020c95b1e5b46f20cb63d1fc05bbebab0772a
 services: postgresql
 bundler_args: "--without production -j4"
 cache: bundler
+before_install:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
 before_script:
   - bundle exec rake db:create
   - bundle exec rake db:migrate
 script: bundle exec rake test
+after_script:
+  - ./cc-test-reporter format-coverage -t simplecov -o coverage/codeclimate.backend.json coverage/backend/.resultset.json
+  - ./cc-test-reporter sum-coverage coverage/codeclimate.*.json -p 2
+  - if [[ "$TRAVIS_TEST_RESULT" == 0 ]]; then ./cc-test-reporter upload-coverage; fi
 deploy:
   provider: heroku
   api_key:
@@ -24,7 +34,3 @@ notifications:
     on_success: always
     on_failure: always
     on_pull_requests: true
-addons:
-  code_climate:
-    repo_token:
-      secure: "og7DaHPdU3Kvqes17IuiuzDxz51RWCmiHMuIEypWuqB9R+mziDXQGYNydOZ4U5L2431wx3jMDa3krp9L6bfAIoFZtMwf4eJwOclzMXP8fRme6KwmhEVAJzd90QPUc0qUYR4mtG/WkxvKpHAv090U7+g9Ok/5p73r/M9Xs3UZeCbLVD9GqUMJc9IeKNL/yH0Jn9iqN+Y2X7VD/sE86PiXDD47+t3ECr1xgh+LOGklEaqkH3KLkQA7PBx78X7tOEPOR7Ceojnmwjm5VNi/3tJBK3qjDVAo+vqxux1Ovn9ytSs4vySKVsjfInIbcqT0xKiUAgWIdx8O5Fx2Vdubv50e8dQXGAu7BhO63Fp3FhkaAxgpT+xQQ9RhH6YRFP3HoV/6fwFfU2SDYm45YlwgGrHR9yRjH9sMOfSS8oMrY3zJWiRFIeSHSjjznNtKp/xKoBRtUAZqJDcxoREIw3jHXy9quF1chVoKHw+r9Cr/SkBd4apDJvHBlDuVhIB6/CVlew0XmHnRlBIwTaNNadCT4T4hGNjQNv2EmtDkjxSPxrDHXR6xeomiSWZF3009hUZQ584xe5bIgCWspVi6KL4PVieglrzNxhvTTwzfpReUdyRECeFGsd22PvRCzaJEoa8z7IJW5Za2G2jJAWuZRrLvWK0Nr8Q88xlO7SWTRx+5Iggzmy8="
