@@ -26,7 +26,6 @@ deploy:
     repo: yosi-q/ydmsample-201901
   run:
     - bundle exec rake db:migrate
-    - bundle exec rake cleanup
 notifications:
   slack:
     rooms:
