@@ -9,6 +9,7 @@ cache: bundler
 before_install:
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
 before_script:
   - bundle exec rake db:create
   - bundle exec rake db:migrate
@@ -16,9 +17,7 @@ script: bundle exec rake test
 after_script:
   - pwd
   - find coverage
-  - ./cc-test-reporter format-coverage -t simplecov -o coverage/codeclimate.backend.json coverage/backend/.resultset.json
-  - ./cc-test-reporter sum-coverage coverage/codeclimate.*.json -p 2
-  - if [[ "$TRAVIS_TEST_RESULT" == 0 ]]; then ./cc-test-reporter upload-coverage; fi
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 deploy:
   provider: heroku
   api_key:
