@@ -37,9 +37,9 @@ class BlogsTest < ApplicationSystemTestCase
   test "destroying a Blog" do
     visit blogs_url
     page.accept_confirm do
-      click_on "Destroy", match: :first
+      click_on "Remove", match: :first
     end
 
-    assert_text "Blog was successfully destroyed"
+    assert_text "Blog was successfully removed"
   end
 end
