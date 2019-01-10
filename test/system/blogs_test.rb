@@ -18,7 +18,7 @@ class BlogsTest < ApplicationSystemTestCase
     fill_in "Title", with: @blog.title
     click_on "Create Blog"
 
-    assert_text "Blog was successfully created"
+    assert_text "Blog was successfully created."
     click_on "Back"
   end
 
@@ -30,16 +30,16 @@ class BlogsTest < ApplicationSystemTestCase
     fill_in "Title", with: @blog.title
     click_on "Update Blog"
 
-    assert_text "Blog was successfully updated"
+    assert_text "Blog was successfully updated."
     click_on "Back"
   end
 
   test "destroying a Blog" do
     visit blogs_url
     page.accept_confirm do
-      click_on "Remove", match: :first
+      click_on "Destroy", match: :first
     end
 
-    assert_text "Blog was successfully removed"
+    assert_text "Blog was successfully destroyed."
   end
 end
