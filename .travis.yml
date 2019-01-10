@@ -1,11 +1,12 @@
 dist: trusty
 sudo: required
 language: ruby
+rvm: 2.5.1
 env:
   global:
     - CC_TEST_REPORTER_ID=943d1f35a9019cfc884b0a99a26020c95b1e5b46f20cb63d1fc05bbebab0772a
     - RAILS_ENV=test
-    services: postgresql
+services: postgresql
 bundler_args: "--without production -j4"
 cache: bundler
 before_install:
