@@ -19,7 +19,7 @@ class BlogsTest < ApplicationSystemTestCase
     click_on "Create Blog"
 
     assert_text "Blog was successfully created."
-    click_on "Back"
+    click_on "戻る"
   end
 
   test "updating a Blog" do
@@ -31,7 +31,7 @@ class BlogsTest < ApplicationSystemTestCase
     click_on "Update Blog"
 
     assert_text "Blog was successfully updated."
-    click_on "Back"
+    click_on "戻る"
   end
 
   test "destroying a Blog" do
