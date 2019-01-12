@@ -18,7 +18,7 @@ class BlogsTest < ApplicationSystemTestCase
     fill_in "Title", with: @blog.title
     click_on "Create Blog"
 
-    assert_text "Blog was successfully created."
+    assert_text "ブログを正常に作成できました!"
     click_on "戻る"
   end
 
