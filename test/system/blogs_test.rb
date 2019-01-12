@@ -7,12 +7,12 @@ class BlogsTest < ApplicationSystemTestCase
 
   test "visiting the index" do
     visit blogs_url
-    assert_selector "h1", text: "Blogs"
+    assert_selector "h1", text: "ブログ"
   end
 
   test "creating a Blog" do
     visit blogs_url
-    click_on "New Blog"
+    click_on "新規作成"
 
     fill_in "Body", with: @blog.body
     fill_in "Title", with: @blog.title
@@ -24,7 +24,7 @@ class BlogsTest < ApplicationSystemTestCase
 
   test "updating a Blog" do
     visit blogs_url
-    click_on "Edit", match: :first
+    click_on "編集", match: :first
 
     fill_in "Body", with: @blog.body
     fill_in "Title", with: @blog.title
@@ -37,7 +37,7 @@ class BlogsTest < ApplicationSystemTestCase
   test "destroying a Blog" do
     visit blogs_url
     page.accept_confirm do
-      click_on "Destroy", match: :first
+      click_on "削除", match: :first
     end
 
     assert_text "Blog was successfully destroyed."
